@@ -1,7 +1,5 @@
-// I have to change this form to  a modal when the button on the previous page in which this modal should open is pressed and after submitting it should submit the data using the api present in contacts.js
-
 import React, { useState, useEffect } from "react";
-import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { Button, Form, FormGroup, Label, Input, Row, Col } from "reactstrap";
 import { addContact, updateContact } from "../api/contacts";
 
 const ContactForm = ({ contact, isEditing }) => {
@@ -11,7 +9,7 @@ const ContactForm = ({ contact, isEditing }) => {
     Email: "",
     Gender: "",
     Location: "",
-    UserId: "",
+    //UserId: "",
   });
 
   // Update formData when editing a contact
@@ -23,7 +21,7 @@ const ContactForm = ({ contact, isEditing }) => {
         Email: contact.Email,
         Gender: contact.Gender,
         Location: contact.Location,
-        UserId: contact.UserId,
+        // UserId: contact.UserId,
       });
     }
   }, [isEditing, contact]);
@@ -69,13 +67,20 @@ const ContactForm = ({ contact, isEditing }) => {
         />
       </FormGroup>
 
+      {/* Gender dropdown with Male, Female, Other options */}
       <FormGroup>
         <Label>Gender</Label>
         <Input
-          type="text"
+          type="select"
           value={formData.Gender}
           onChange={(e) => setFormData({ ...formData, Gender: e.target.value })}
-        />
+          required
+        >
+          <option value="">Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </Input>
       </FormGroup>
 
       <FormGroup>
@@ -89,18 +94,14 @@ const ContactForm = ({ contact, isEditing }) => {
         />
       </FormGroup>
 
-      <FormGroup>
-        <Label>UserId</Label>
-        <Input
-          type="text"
-          value={formData.UserId}
-          onChange={(e) => setFormData({ ...formData, UserId: e.target.value })}
-        />
-      </FormGroup>
-
-      <Button color="success" type="submit">
-        {isEditing ? "Update Contact" : "Add Contact"}
-      </Button>
+      {/* Centering the Submit Button */}
+      <Row className="d-flex justify-content-center">
+        <Col xs="auto">
+          <Button color="success" type="submit">
+            {isEditing ? "Update Contact" : "Add Contact"}
+          </Button>
+        </Col>
+      </Row>
     </Form>
   );
 };

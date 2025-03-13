@@ -1,20 +1,29 @@
 import React, { useState, useEffect } from "react";
-import { Container, Input, Button } from "reactstrap";
+import {
+  Container,
+  Input,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+} from "reactstrap";
 import ContactList from "./ContactList";
+import ContactForm from "./ContactForm"; // Import ContactForm
 import { getContacts } from "../api/contacts";
-import "./../css/home.css"
+import "./../css/home.css";
+
 const Home = () => {
   const [contacts, setContacts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [modalOpen, setModalOpen] = useState(false); // Controls modal visibility
+  const [selectedContact, setSelectedContact] = useState(null); // Stores contact for editing
 
-  useEffect(() => {// arrow function ()=>
+  useEffect(() => {
     const fetchContacts = async () => {
       try {
         const response = await getContacts();
-        
         if (response) {
           setContacts(response);
-           // Use response.data directly
         } else {
           setContacts([]);
         }
@@ -24,12 +33,24 @@ const Home = () => {
       }
     };
     fetchContacts();
-  }, []);//dependency array []
-  console.log(contacts);
+  }, []);
+
   const filteredContacts = contacts.filter((contact) =>
     contact.Name.toLowerCase().includes(searchTerm.toLowerCase())
   );
-  
+
+  // Open modal for adding a new contact
+  const handleAddClick = () => {
+    setSelectedContact(null); // Ensure it's empty for a new contact
+    setModalOpen(true);
+  };
+
+  // Open modal for editing a contact
+  const handleEditClick = (contact) => {
+    setSelectedContact(contact);
+    setModalOpen(true);
+  };
+
   return (
     <Container className="mt-4" id="container">
       <h2 className="text-center mb-3">Contact Manager</h2>
@@ -38,14 +59,30 @@ const Home = () => {
         placeholder="Search contacts..."
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      <ContactList contacts={filteredContacts} />
+      <ContactList contacts={filteredContacts} onEdit={handleEditClick} />
+
+      {/* Plus Button to Open Modal for Adding Contact */}
       <Button
         color="primary"
         className="rounded-circle position-fixed bottom-0 end-0 m-4"
         style={{ width: "50px", height: "50px" }}
+        onClick={handleAddClick}
       >
         +
       </Button>
+
+      {/* Modal for Adding or Editing Contact */}
+      <Modal isOpen={modalOpen} toggle={() => setModalOpen(!modalOpen)}>
+        <ModalHeader toggle={() => setModalOpen(false)}>
+          {selectedContact ? "Edit Contact" : "Add New Contact"}
+        </ModalHeader>
+        <ModalBody>
+          <ContactForm
+            closeModal={() => setModalOpen(false)}
+            contactData={selectedContact} // Pass contact if editing
+          />
+        </ModalBody>
+      </Modal>
     </Container>
   );
 };
