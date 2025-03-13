@@ -74,12 +74,13 @@ const Home = () => {
       {/* Modal for Adding or Editing Contact */}
       <Modal isOpen={modalOpen} toggle={() => setModalOpen(!modalOpen)}>
         <ModalHeader toggle={() => setModalOpen(false)}>
-          {selectedContact ? "Edit Contact" : "Add New Contact"}
+          Add new Contact
         </ModalHeader>
         <ModalBody>
           <ContactForm
             closeModal={() => setModalOpen(false)}
-            contactData={selectedContact} // Pass contact if editing
+            contact={null} // Pass contact if editing
+            isEditing={false}
           />
         </ModalBody>
       </Modal>

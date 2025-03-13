@@ -38,15 +38,15 @@ app.get("/contacts", async (req, res) => {
 
 //Add a New Contact
 app.post("/contacts", async (req, res) => {
-  const { email, gender, location, name, number, userId } = req.body;
-  if (!email || !gender || !location || !name || !number || !userId) {
+  const { Email, Gender, Location, Name, Number, UserId } = req.body;
+  if (!Email || !Gender || !Location || !Name || !Number || !UserId) {
     return res.status(400).json({ error: "All fields are required" });
   }
   try {
     const docRef = await db
       .collection("Contacts")
-      .add({ email, gender, location, name, number, userId });
-    res.status(201).json({ id: docRef.id, email, gender, location, name, number, userId });
+      .add({ Email, Gender, Location, Name, Number, UserId });
+    res.status(201).json({ id: docRef.id, Email, Gender, Location, Name, Number, UserId });
   } catch (err) {
     res.status(500).json({ error: "Failed to add contact" });
   }
@@ -69,12 +69,12 @@ app.get("/contacts/:id", async (req, res) => {
 //Update a Contact
 app.put("/contacts/:id", async (req, res) => {
   const { id } = req.params;
-  const { email, gender, location, name, number, userId } = req.body;
+  const { Email, Gender, Location, Name, Number, UserId } = req.body;
   try {
     await db
       .collection("Contacts")
       .doc(id)
-      .update({ email, gender, location, name, number, userId });
+      .update({ Email, Gender, Location, Name, Number, UserId });
     res.status(200).json({ message: "Contact updated successfully" });
   } catch (err) {
     res.status(500).json({ error: "Failed to update contact" });

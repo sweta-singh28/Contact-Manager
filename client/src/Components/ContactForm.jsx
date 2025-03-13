@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Button, Form, FormGroup, Label, Input, Row, Col } from "reactstrap";
 import { addContact, updateContact } from "../api/contacts";
-
-const ContactForm = ({ contact, isEditing }) => {
+import { useParams } from "react-router-dom";
+const ContactForm = ({ contact, isEditing ,closeModal}) => {
+  const { id } = useParams();
   const [formData, setFormData] = useState({
     Name: "",
     Number: "",
     Email: "",
     Gender: "",
     Location: "",
-    //UserId: "",
+    UserId: "swetasinghgs28@gmail.com",
   });
 
   // Update formData when editing a contact
@@ -21,7 +22,7 @@ const ContactForm = ({ contact, isEditing }) => {
         Email: contact.Email,
         Gender: contact.Gender,
         Location: contact.Location,
-        // UserId: contact.UserId,
+        UserId: "swetasinghgs28@gmail.com",
       });
     }
   }, [isEditing, contact]);
@@ -30,10 +31,11 @@ const ContactForm = ({ contact, isEditing }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (isEditing) {
-      await updateContact(contact.id, formData);
+      await updateContact(id, formData);
     } else {
       await addContact(formData);
     }
+    closeModal();
   };
 
   return (

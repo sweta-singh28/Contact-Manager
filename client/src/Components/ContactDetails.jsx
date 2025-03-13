@@ -1,26 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Card, CardBody, CardTitle, CardText, Button } from "reactstrap";
-import { getContacts } from "../api/contacts";
+import {
+  Card,
+  CardBody,
+  CardTitle,
+  CardText,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+} from "reactstrap";
+import { getContactById} from "../api/contacts";
+import ContactForm from "./ContactForm"; // Import the ContactForm component
 
 const ContactDetails = () => {
-  //??
   const { id } = useParams(); // Get the contact ID from URL parameters
   const [contact, setContact] = useState(null); // Store contact details
-
+  const [modal, setModal] = useState(false); // State to handle modal visibility
+  const fetchContact = async () => {
+    const data = await getContactById(id);
+    const contact = data;
+    setContact(contact);
+  };
   useEffect(() => {
-    const fetchContact = async () => {
-      // Fetch all contacts
-      const data = await getContacts();
+    
+    fetchContact();
+  }, [id]);
 
-      // Find the contact by ID (assuming 'id' exists in the response)
-      const contact = data.find((contact) => contact.id === id);
-
-      setContact(contact); // Set the found contact details
-    };
-
-    fetchContact(); // Fetch the contact when the component mounts
-  }, [id]); // Trigger fetch whenever 'id' changes
+  const toggleModal = () => {setModal(!modal)
+    fetchContact();
+  }; // Function to toggle the modal
 
   return (
     <Card className="mt-4">
@@ -32,7 +41,17 @@ const ContactDetails = () => {
             <CardText>Email: {contact.Email}</CardText>
             <CardText>Gender: {contact.Gender}</CardText>
             <CardText>Location: {contact.Location}</CardText>
-            <Button color="primary">Edit</Button>
+            <Button color="primary" onClick={toggleModal}>
+              Edit
+            </Button>
+
+            {/* Modal for ContactForm */}
+            <Modal isOpen={modal} toggle={toggleModal}>
+              <ModalHeader toggle={toggleModal}>Edit Contact</ModalHeader>
+              <ModalBody>
+                <ContactForm contact={contact} closeModal={toggleModal} isEditing={true}/>
+              </ModalBody>
+            </Modal>
           </>
         ) : (
           <p>Loading...</p>
