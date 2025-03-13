@@ -6,6 +6,7 @@ const API_URL = "http://localhost:5000/contacts"; // Middleware API Base URL
 export const getContacts = async () => {
   try {
     const response = await axios.get(API_URL);
+    console.log(response);
     return response.data;
   } catch (error) {
     console.error("Error fetching contacts:", error);

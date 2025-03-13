@@ -5,14 +5,18 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+ /* Light gray background */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+#root{
+  background-color:#F8F3D9; /* Light gray background */
+  width:100%;
+  height:100%;
+}
 a {
   font-weight: 500;
   color: #646cff;

@@ -3,15 +3,18 @@ import { ListGroup, ListGroupItem } from "reactstrap";
 import ContactCard from "./ContactCard";
 
 const ContactList = ({ contacts }) => {
-  // Ensure contacts.data exists to prevent errors
-  if (!contacts || !contacts.data || contacts.data.length === 0) {
+  // accept contacts as a prop
+  // Ensure contacts.data exists to prevent errors (//handling edge cases)
+  if (!contacts || !contacts || contacts.length === 0) {
     return <p>No contacts available.</p>;
   }
 
   // Group contacts alphabetically by the first letter of their name
-  const groupedContacts = contacts.data.reduce((acc, contact) => {
+  //acc → Accumulator (object) that stores the grouped contacts.
+  const groupedContacts = contacts.reduce((acc, contact) => {
     if (contact.Name) {
       const letter = contact.Name.charAt(0).toUpperCase();
+      //??
       if (!acc[letter]) acc[letter] = [];
       acc[letter].push(contact);
     }

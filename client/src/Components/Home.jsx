@@ -2,17 +2,19 @@ import React, { useState, useEffect } from "react";
 import { Container, Input, Button } from "reactstrap";
 import ContactList from "./ContactList";
 import { getContacts } from "../api/contacts";
-
+import "./../css/home.css"
 const Home = () => {
   const [contacts, setContacts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
-  useEffect(() => {
+  useEffect(() => {// arrow function ()=>
     const fetchContacts = async () => {
       try {
         const response = await getContacts();
-        if (response?.data) {
-          setContacts(response.data); // Use response.data directly
+        
+        if (response) {
+          setContacts(response);
+           // Use response.data directly
         } else {
           setContacts([]);
         }
@@ -22,14 +24,14 @@ const Home = () => {
       }
     };
     fetchContacts();
-  }, []);
-
+  }, []);//dependency array []
+  console.log(contacts);
   const filteredContacts = contacts.filter((contact) =>
     contact.Name.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
+  
   return (
-    <Container className="mt-4">
+    <Container className="mt-4" id="container">
       <h2 className="text-center mb-3">Contact Manager</h2>
       <Input
         type="text"
