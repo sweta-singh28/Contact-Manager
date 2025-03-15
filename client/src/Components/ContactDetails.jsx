@@ -12,6 +12,7 @@ import {
 } from "reactstrap";
 import { getContactById} from "../api/contacts";
 import ContactForm from "./ContactForm"; // Import the ContactForm component
+import "./../css/ContactDetails.css";
 
 const ContactDetails = () => {
   const { id } = useParams(); // Get the contact ID from URL parameters

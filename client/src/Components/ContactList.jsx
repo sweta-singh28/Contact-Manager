@@ -1,6 +1,7 @@
 import React from "react";
 import { ListGroup, ListGroupItem } from "reactstrap";
 import ContactCard from "./ContactCard";
+import "./../css/ContactList.css";
 
 const ContactList = ({ contacts }) => {
   // accept contacts as a prop
@@ -22,11 +23,11 @@ const ContactList = ({ contacts }) => {
   }, {});
 
   return (
-    <div>
+    <div className="pt-5" >
       {Object.keys(groupedContacts)
         .sort()
         .map((letter) => (
-          <div key={letter} className="mb-3">
+          <div key={letter} className="mb-3 ">
             <h5>{letter}</h5>
             <ListGroup>
               {groupedContacts[letter].map((contact) => (

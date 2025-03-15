@@ -1,0 +1,90 @@
+/* Container for ContactCard */
+.contact-card {
+  transition: transform 0.2s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+  cursor: pointer;
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  justify-content: center; /* Center content vertically */
+  height: 80px; /* Adjust height for smaller card */
+  margin-bottom: 15px; /* Spacing between cards */
+  width: 100%; /* Keep full width */
+}
+
+/* Card hover effect */
+.contact-card:hover {
+  transform: translateY(-5px); /* Slight lift effect */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for hover */
+  color: #333;
+}
+
+/* Card Body */
+.card-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  border-radius: 8px; /* Rounded corners */
+  height: 100%; /* Ensure card body fills the card */
+}
+
+/* Card Title */
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #f9f9f9;
+  margin-bottom: 0.5rem;
+  text-transform: capitalize; /* Capitalize the name properly */
+  display: flex;
+  align-items: center; /* Vertically align text in the title */
+  justify-content: center; /* Horizontally center the title */
+  height: 100%; /* Ensure title takes full height for centering */
+}
+
+/* Card Text */
+.card-text {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 0.25rem;
+  font-family: Arial, sans-serif; /* Clean, readable font */
+  line-height: 1.5; /* Spacing between lines of text */
+}
+
+/* Card Text strong formatting */
+.card-text strong {
+  color: #333; /* Dark color for labels */
+}
+
+.contact-card:hover .card-title {
+  color: #333; /* Strong black color */
+}
+
+/* Hover effect for the card */
+.contact-card:hover {
+  background-color: #f1f1f1;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+/* Spacing and size adjustments for screen responsiveness */
+@media (max-width: 768px) {
+  .contact-card {
+    width: 100%; /* Full width for mobile */
+    margin-bottom: 1rem; /* Add spacing between cards */
+  }
+
+  .card-body {
+    padding: 1rem; /* Adjust padding for mobile */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align content at the top */
+  }
+
+  .card-title {
+    font-size: 1.2rem; /* Adjust title font size */
+  }
+
+  .card-text {
+    font-size: 0.9rem; /* Adjust text font size for readability */
+  }
+}

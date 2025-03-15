@@ -1,3 +1,266 @@
-#container{
-    background-color:red;
+/* General Styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #2C2C2C; /* Slightly lighter than navbar and footer */
+  color: #E0E0E0; /* Light text for contrast */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures the body takes full height */
+  transition: background-color 0.5s ease;
+}
+
+main {
+  flex: 1; /* Ensures the main content fills available space */
+  padding-top: 100px; /* Increased for navbar height */
+  animation: fadeInUp 1.5s ease-out;
+}
+
+/* Container for the whole page */
+#container {
+  background-color: #2B2B2B;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 1s ease-out;
+    margin-bottom: 80px;
+    transition: box-shadow 0.3s ease-in-out;
+    margin-top: 150px;
+}
+
+#container:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* Navbar Styling */
+.navbar {
+  background-color: #1F1F1F; /* Dark background for navbar */
+  padding: 20px 40px; /* Increased padding for a larger navbar */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Align logo and title to the left */
+  color: white;
+  position: fixed; /* Fixed navbar */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Keeps navbar on top */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  animation: slideInLeft 1s ease-out;
+}
+
+.navbar-logo {
+  width: 35px;
+  height: auto;
+  margin-right: 15px;
+  animation: logoPulse 1.5s infinite alternate;
+}
+
+.navbar-title {
+  font-size: 18px; /* Increased font size */
+  font-weight: bold;
+  letter-spacing: 1px;
+  animation: fadeInLeft 1s ease-out;
+}
+
+.search-bar {
+  margin-left: auto; /* Pushes the search bar to the right */
+  border-radius: 20px;
+  padding: 12px;
+  width: 300px;
+  border: 1px solid #444;
+  background-color: #444; /* Darker background for input */
+  color: #E0E0E0; /* Light text color */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-bar:focus {
+  border-color: #CA3E47; /* Accent color on focus */
+  box-shadow: 0 0 5px rgba(202, 62, 71, 0.7);
+}
+/* Footer Styling */
+footer.footer {
+  background-color: #1F1F1F; /* Dark background for footer */
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  width: 100%;
+  position: fixed; /* Make the footer fixed to the bottom of the screen */
+  bottom: 0; /* Stick it to the bottom */
+  left: 0;
+  z-index: 10; /* Ensure it's above other content */
+  animation: slideUp 1s ease-out;
+}
+
+/* Footer text styling */
+footer p {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: 1px;
+  animation: fadeInUp 2s ease-out;
+}
+
+
+/* Button Styling */
+button {
+  border: none;
+  outline: none;
+  transition: transform 0.2s ease-in-out;
+  background-color: #CA3E47; /* Accent color for buttons */
+  color: white;
+}
+
+button:hover {
+  cursor: pointer;
+  transform: translateY(-3px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Floating Add Button */
+button.rounded-circle {
+  background-color: #CA3E47; /* Accent color */
+  color: white;
+  font-size: 24px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 10px rgba(202, 62, 71, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: fixed;
+  bottom: 30px; /* Fixed to the bottom */
+  right: 30px;  /* Fixed to the right */
+  z-index: 1100; /* Make sure it stays on top of other elements */
+  animation: bounce 2s infinite ease-in-out;
+}
+
+button.rounded-circle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(202, 62, 71, 0.7);
+}
+
+button.rounded-circle:active {
+  transform: scale(1.05);
+}
+
+/* Modal Styling */
+.modal-content {
+  border-radius: 8px;
+  background-color: #2B2B2B; /* Dark modal background */
+}
+
+.modal-header {
+  background-color: #444; /* Dark header */
+  color: white;
+  font-weight: bold;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  animation: fadeInUp 1.5s ease-out;
+}
+
+.modal-body {
+  padding: 20px;
+  background-color: #333; /* Dark background for modal body */
+  color: #E0E0E0; /* Light text */
+}
+
+.modal-footer {
+  background-color: #333;
+}
+
+.modal-footer .btn {
+  border-radius: 20px;
+  padding: 10px;
+  background-color: #CA3E47; /* Accent color */
+  color: white;
+}
+
+/* Contact List Styling */
+.contact-list {
+  margin-bottom: 20px;
+  animation: fadeInUp 1s ease-out;
+}
+
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes logoPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

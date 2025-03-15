@@ -10,7 +10,8 @@ import {
 import ContactList from "./ContactList";
 import ContactForm from "./ContactForm"; // Import ContactForm
 import { getContacts } from "../api/contacts";
-import "./../css/home.css";
+import "./../css/Home.css";
+import logo from "../assets/logo.jpg";
 
 const Home = () => {
   const [contacts, setContacts] = useState([]);
@@ -52,39 +53,51 @@ const Home = () => {
   };
 
   return (
-    <Container className="mt-4" id="container">
-      <h2 className="text-center mb-3">Contact Manager</h2>
-      <Input
-        type="text"
-        placeholder="Search contacts..."
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-      <ContactList contacts={filteredContacts} onEdit={handleEditClick} />
+    <>
+      {/* Navbar */}
+      <nav className="navbar g-2 pb-3">
+        <img src={logo} alt="Logo" className="navbar-logo" />
+        <h1 className="navbar-title">ContactBook</h1>
+        <Input
+          type="text"
+          placeholder="Search contacts..."
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="search-bar"
+        />
+      </nav>
+      <Container  id="container">
+        <ContactList contacts={filteredContacts} onEdit={handleEditClick} />
 
-      {/* Plus Button to Open Modal for Adding Contact */}
-      <Button
-        color="primary"
-        className="rounded-circle position-fixed bottom-0 end-0 m-4"
-        style={{ width: "50px", height: "50px" }}
-        onClick={handleAddClick}
-      >
-        +
-      </Button>
+        {/* Plus Button to Open Modal for Adding Contact */}
+        <Button
+          color="primary"
+          className="rounded-circle position-fixed bottom-0 end-0 m-4"
+          style={{ width: "50px", height: "50px" }}
+          onClick={handleAddClick}
+        >
+          +
+        </Button>
 
-      {/* Modal for Adding or Editing Contact */}
-      <Modal isOpen={modalOpen} toggle={() => setModalOpen(!modalOpen)}>
-        <ModalHeader toggle={() => setModalOpen(false)}>
-          Add new Contact
-        </ModalHeader>
-        <ModalBody>
-          <ContactForm
-            closeModal={() => setModalOpen(false)}
-            contact={null} // Pass contact if editing
-            isEditing={false}
-          />
-        </ModalBody>
-      </Modal>
-    </Container>
+        {/* Modal for Adding or Editing Contact */}
+        <Modal isOpen={modalOpen} toggle={() => setModalOpen(!modalOpen)}>
+          <ModalHeader toggle={() => setModalOpen(false)}>
+            {selectedContact ? "Edit Contact" : "Add New Contact"}
+          </ModalHeader>
+          <ModalBody>
+            <ContactForm
+              closeModal={() => setModalOpen(false)}
+              contact={selectedContact}
+              isEditing={!!selectedContact}
+            />
+          </ModalBody>
+        </Modal>
+      </Container>
+
+      {/* Footer */}
+      <footer className="footer">
+        <p>© 2025 ContactBook. All rights reserved.</p>
+      </footer>
+    </>
   );
 };
 

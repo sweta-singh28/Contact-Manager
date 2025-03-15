@@ -1,0 +1,56 @@
+/* ContactForm.css */
+
+/* General form styling */
+form {
+  background-color: #222; /* Dark background */
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 500px;
+  margin: auto;
+  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Form labels */
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Form inputs */
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+}
+
+/* Input focus effect */
+input:focus, select:focus {
+  border-color: #66ccff;
+  outline: none;
+  box-shadow: 0px 0px 5px #66ccff;
+}
+
+/* Button styling */
+button {
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+/* Centering the button */
+.d-flex.justify-content-center {
+  margin-top: 20px;
+}

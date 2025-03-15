@@ -1,0 +1,158 @@
+/* contact.css */
+.contact-list-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  background-color: #1e1e1e; /* Dark background */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  color: #ffffff; /* Light text for contrast */
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contact-group {
+  margin-bottom: 20px;
+}
+
+.contact-group h5 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #ffcc00; /* Highlighted header */
+  padding-bottom: 5px;
+  border-bottom: 2px solid #ffcc00;
+}
+
+.list-group {
+  background-color: transparent;
+}
+
+.list-group-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  background-color: #2c2c2c;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Hover effect with smooth scaling */
+.list-group-item:hover {
+  background-color: #383838;
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(255, 204, 0, 0.3);
+}
+
+/* Ripple effect */
+.list-group-item:active::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 10%;
+  background: rgba(255, 204, 0, 0.2);
+  animation: ripple 0.4s ease-out;
+}
+
+@keyframes ripple {
+  from {
+    opacity: 1;
+    transform: scale(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+
+/* Contact Card */
+.contact-card {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  transform: translateX(-10px);
+  animation: slideIn 0.5s ease-in-out forwards;
+}
+
+/* Slide-in animation for contact details */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.contact-card img {
+  width: 50px;
+  height: 10px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ffcc00;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Image bounce effect on hover */
+.contact-card img:hover {
+  transform: scale(1.1);
+}
+
+.contact-card .contact-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-card .contact-name {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.contact-card .contact-details {
+  font-size: 0.9rem;
+  color: #cccccc;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .contact-list-container {
+    padding: 10px;
+  }
+
+  .list-group-item {
+    padding: 12px;
+  }
+
+  .contact-card img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .contact-name {
+    font-size: 0.95rem;
+  }
+
+  .contact-details {
+    font-size: 0.8rem;
+  }
+}
