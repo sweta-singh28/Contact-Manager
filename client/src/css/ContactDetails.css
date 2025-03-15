@@ -1,13 +1,23 @@
 /* ContactDetails.css */
 
+body {
+  background-color: #121212;
+  color: white;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
 .card {
-  background-color: rgba(0,0,0,0.1);
+  background-color: rgba(0, 0, 0, 0.2);
   color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
   padding: 20px;
-  max-width: 100%;
+  max-width: 500px;
   margin: auto;
+  position: relative;
+  text-align: center;
 }
 
 .card-title {
@@ -21,6 +31,7 @@
   margin-bottom: 10px;
 }
 
+/* Button Styling */
 button {
   background-color: #007bff;
   color: white;
@@ -36,6 +47,7 @@ button:hover {
   background-color: #0056b3;
 }
 
+/* Modal Styling */
 .modal-content {
   background-color: #282c34;
   color: white;
@@ -48,4 +60,26 @@ button:hover {
 
 .modal-body {
   padding: 20px;
+}
+
+/* Edit and Delete Buttons on Top-Right of the Page */
+.icon-container {
+  position: fixed;  /* Stays at the top */
+  top: 15px;
+  right: 20px;
+  display: flex;
+  gap: 15px;
+  z-index: 1000;
+}
+
+.icon-container i {
+  font-size: 24px;
+  cursor: pointer;
+  color: #ffffff;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.icon-container i:hover {
+  color: #007bff;
+  transform: scale(1.1);
 }
