@@ -1,6 +1,7 @@
 // src/components/Logout.js
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
+import "./../css/LogOut.css";
 
 function Logout() {
   const handleLogout = async () => {

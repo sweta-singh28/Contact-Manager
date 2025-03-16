@@ -1,4 +1,4 @@
-/* Login.css */
+/* src/components/SignUp.css */
 * {
   margin: 0;
   padding: 0;
@@ -15,7 +15,7 @@ body, html {
   color: #fff;
 }
 
-.login-container {
+.signup-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,43 +23,43 @@ body, html {
   height: 100vh;
 }
 
-.login-box {
+.signup-box {
   background: #181818; /* Dark container */
-  padding: 3rem;
+  padding: 3rem; /* Increased padding */
   border-radius: 12px;
   box-shadow: 0px 8px 20px rgba(202, 62, 71, 0.2); /* Subtle red glow */
-  width: 380px;
+  width: 380px; /* Increased width */
   text-align: center;
   animation: fadeIn 0.8s ease-in-out, slideUp 0.8s ease-in-out;
 }
 
 h2 {
-  margin-bottom: 1.5rem;
-  font-size: 24px;
-  color: #ffffff; /* Updated red color */
+  margin-bottom: 1.5rem; /* Increased margin */
+  font-size: 24px; /* Increased font size */
+  color: #ffffff; /* White text */
 }
 
 form {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1.2rem; /* Increased gap between fields */
 }
 
 label {
   text-align: left;
-  font-size: 15px;
+  font-size: 15px; /* Increased font size */
   color: #aaa;
 }
 
 input {
   width: 100%;
-  padding: 12px;
+  padding: 12px; /* Increased padding */
   border: 1px solid #333;
   background: #222;
   color: #fff;
   border-radius: 8px;
   transition: all 0.3s ease;
-  font-size: 15px;
+  font-size: 15px; /* Increased font size */
 }
 
 input:focus {
@@ -70,13 +70,13 @@ input:focus {
 }
 
 button {
-  background:rgb(151, 56, 62);
+  background: rgb(151, 56, 62);
   color: #fff;
-  padding: 12px;
+  padding: 12px; /* Increased padding */
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 17px;
+  font-size: 17px; /* Increased font size */
   font-weight: 600;
   transition: transform 0.3s ease, background 0.3s ease;
 }
@@ -98,7 +98,7 @@ p {
 p button {
   background: none;
   border: none;
-  color:rgb(182, 57, 66);
+  color: rgb(182, 57, 66);
   cursor: pointer;
   font-size: 14px;
   transition: color 0.3s ease;

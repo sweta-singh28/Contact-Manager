@@ -1,0 +1,40 @@
+/* src/components/Logout.css */
+.logout-button {
+  background-color: #ff6347; /* Tomato color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px; /* Reduced padding */
+  font-size: 14px; /* Smaller font size */
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+.logout-button:hover {
+  background-color: #ff4500; /* Darker shade of Tomato */
+  transform: scale(1.1);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.logout-button:active {
+  background-color: #e63946; /* Red-Orange shade */
+  transform: scale(0.98);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+.logout-button {
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
