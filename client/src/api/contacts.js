@@ -3,9 +3,11 @@ import axios from "axios";
 const API_URL = "http://localhost:5000/contacts"; // Middleware API Base URL
 
 // Fetch all contacts
-export const getContacts = async () => {
+export const getContacts = async (email) => {
   try {
-    const response = await axios.get(API_URL);
+    const response = await axios.get(API_URL, {
+      params: { email }, // Send email as a query parameter
+    });
     console.log(response);
     return response.data;
   } catch (error) {
@@ -13,6 +15,8 @@ export const getContacts = async () => {
     return [];
   }
 };
+
+
 
 // Add a new contact
 export const addContact = async (contact) => {

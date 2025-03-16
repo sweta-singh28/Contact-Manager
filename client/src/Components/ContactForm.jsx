@@ -4,13 +4,14 @@ import { addContact, updateContact } from "../api/contacts";
 import { useParams } from "react-router-dom";
 const ContactForm = ({ contact, isEditing ,closeModal}) => {
   const { id } = useParams();
+  const userId=localStorage.getItem("email");
   const [formData, setFormData] = useState({
     Name: "",
     Number: "",
     Email: "",
     Gender: "",
     Location: "",
-    UserId: "swetasinghgs28@gmail.com",
+    UserId: userId,
   });
 
   // Update formData when editing a contact
@@ -22,7 +23,7 @@ const ContactForm = ({ contact, isEditing ,closeModal}) => {
         Email: contact.Email,
         Gender: contact.Gender,
         Location: contact.Location,
-        UserId: "swetasinghgs28@gmail.com",
+        UserId: userId,
       });
     }
   }, [isEditing, contact]);

@@ -1,0 +1,149 @@
+/* Login.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body, html {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0f0f0f; /* Darker background */
+  color: #fff;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.login-box {
+  background: #181818; /* Dark container */
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0px 8px 20px rgba(202, 62, 71, 0.2); /* Subtle red glow */
+  width: 380px;
+  text-align: center;
+  animation: fadeIn 0.8s ease-in-out, slideUp 0.8s ease-in-out;
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+  font-size: 24px;
+  color: #ffffff; /* Updated red color */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+label {
+  text-align: left;
+  font-size: 15px;
+  color: #aaa;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #333;
+  background: #222;
+  color: #fff;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-size: 15px;
+}
+
+input:focus {
+  border-color: #CA3E47;
+  outline: none;
+  box-shadow: 0px 0px 8px rgba(202, 62, 71, 0.4);
+  transform: scale(1.03);
+}
+
+button {
+  background: #CA3E47;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 600;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+button:hover {
+  background: rgba(202, 62, 71, 0.7);
+  transform: scale(1.05);
+}
+
+button:active {
+  background: #007BFF !important; /* Force blue color on click */
+}
+
+p {
+  margin-top: 1rem;
+  font-size: 14px;
+}
+
+p button {
+  background: none;
+  border: none;
+  color: #CA3E47;
+  cursor: pointer;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+p button:hover {
+  text-decoration: underline;
+  color: rgba(202, 62, 71, 0.7);
+}
+
+p button:active {
+  color: #007BFF !important; /* Force blue color on click */
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  animation: shake 0.3s ease-in-out;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}

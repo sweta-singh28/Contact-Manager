@@ -10,6 +10,7 @@ body {
   background-color: #2C2C2C; /* Slightly lighter than navbar and footer */
   color: #E0E0E0; /* Light text for contrast */
   display: flex;
+  width:100%;
   flex-direction: column;
   min-height: 100vh; /* Ensures the body takes full height */
   transition: background-color 0.5s ease;

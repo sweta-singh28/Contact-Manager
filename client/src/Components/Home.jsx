@@ -12,17 +12,18 @@ import ContactForm from "./ContactForm"; // Import ContactForm
 import { getContacts } from "../api/contacts";
 import "./../css/Home.css";
 import logo from "../assets/logo.jpg";
-
+import Logout from "./LogOut";
+// import {profile} from "lucide-react";
 const Home = () => {
   const [contacts, setContacts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [modalOpen, setModalOpen] = useState(false); // Controls modal visibility
   const [selectedContact, setSelectedContact] = useState(null); // Stores contact for editing
-
+  const userId= localStorage.getItem("email");
   useEffect(() => {
     const fetchContacts = async () => {
       try {
-        const response = await getContacts();
+        const response = await getContacts(userId);
         if (response) {
           setContacts(response);
         } else {
@@ -34,7 +35,7 @@ const Home = () => {
       }
     };
     fetchContacts();
-  }, []);
+  }, [modalOpen,userId]);
 
   const filteredContacts = contacts.filter((contact) =>
     contact.Name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -55,17 +56,19 @@ const Home = () => {
   return (
     <>
       {/* Navbar */}
-      <nav className="navbar g-2 pb-3">
-        <img src={logo} alt="Logo" className="navbar-logo" />
-        <h1 className="navbar-title">ContactBook</h1>
-        <Input
-          type="text"
-          placeholder="Search contacts..."
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="search-bar"
-        />
-      </nav>
-      <Container  id="container">
+
+      <Container id="container">
+        <nav className="navbar g-2 pb-3">
+          <img src={logo} alt="Logo" className="navbar-logo" />
+          <h1 className="navbar-title">ContactBook</h1>
+          <Input
+            type="text"
+            placeholder="Search contacts..."
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="search-bar"
+          />
+          <Logout />
+        </nav>
         <ContactList contacts={filteredContacts} onEdit={handleEditClick} />
 
         {/* Plus Button to Open Modal for Adding Contact */}

@@ -22,35 +22,69 @@ app.get("/", (req, res) => {
   res.send("Contact Manager API is running");
 });
 
-//Fetch All Contacts
+// Fetch All Contacts (GET method)
 app.get("/contacts", async (req, res) => {
+  const { email } = req.query; // Extract email from the query string (GET request)
+
+  if (!email) {
+    return res
+      .status(400)
+      .json({ error: "Email is required in the query string" });
+  }
+
   try {
-    const snapshot = await db.collection("Contacts").get();
+    // Query the contacts collection where UserId matches the provided email
+    const snapshot = await db
+      .collection("Contacts")
+      .where("UserId", "==", email) // Filter by UserId (email)
+      .get();
+
+    // If no contacts are found
+    if (snapshot.empty) {
+      return res
+        .status(404)
+        .json({ message: "No contacts found for this user" });
+    }
+
     const contacts = snapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
     }));
+
+    // Send the filtered contacts in the response
     res.status(200).json(contacts);
   } catch (err) {
+    console.error("Error fetching contacts:", err);
     res.status(500).json({ error: "Failed to fetch contacts" });
   }
 });
 
-//Add a New Contact
+// Add a New Contact (POST method)
 app.post("/contacts", async (req, res) => {
   const { Email, Gender, Location, Name, Number, UserId } = req.body;
+
   if (!Email || !Gender || !Location || !Name || !Number || !UserId) {
     return res.status(400).json({ error: "All fields are required" });
   }
+
   try {
     const docRef = await db
       .collection("Contacts")
       .add({ Email, Gender, Location, Name, Number, UserId });
-    res.status(201).json({ id: docRef.id, Email, Gender, Location, Name, Number, UserId });
+    res.status(201).json({
+      id: docRef.id,
+      Email,
+      Gender,
+      Location,
+      Name,
+      Number,
+      UserId,
+    });
   } catch (err) {
     res.status(500).json({ error: "Failed to add contact" });
   }
 });
+
 
 //Fetch a Specific Contact
 app.get("/contacts/:id", async (req, res) => {
