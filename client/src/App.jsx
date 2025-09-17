@@ -11,7 +11,7 @@ import Home from "./Components/Home.jsx";
 import ContactDetails from "./Components/ContactDetails.jsx";
 import SignUp from "./Components/SignUp.jsx";
 import Login from "./Components/Login.jsx";
-import Logout from "./Components/LogOut.jsx"; // Assuming you have a Logout component
+import Logout from "./Components/LogOut.jsx"; 
 
 function App() {
   const [user, setUser] = useState(null);
