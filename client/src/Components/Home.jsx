@@ -13,13 +13,15 @@ import { getContacts } from "../api/contacts";
 import "./../css/Home.css";
 import logo from "../assets/logo.jpg";
 import Logout from "./LogOut";
-// import {profile} from "lucide-react";
+import { FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa"; // Social icons
+
 const Home = () => {
   const [contacts, setContacts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [modalOpen, setModalOpen] = useState(false); // Controls modal visibility
   const [selectedContact, setSelectedContact] = useState(null); // Stores contact for editing
-  const userId= localStorage.getItem("email");
+  const userId = localStorage.getItem("email");
+
   useEffect(() => {
     const fetchContacts = async () => {
       try {
@@ -35,7 +37,7 @@ const Home = () => {
       }
     };
     fetchContacts();
-  }, [modalOpen,userId]);
+  }, [modalOpen, userId]);
 
   const filteredContacts = contacts.filter((contact) =>
     contact.Name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -56,7 +58,6 @@ const Home = () => {
   return (
     <>
       {/* Navbar */}
-
       <Container id="container">
         <nav className="navbar g-2 pb-3">
           <img src={logo} alt="Logo" className="navbar-logo" />
@@ -69,6 +70,7 @@ const Home = () => {
           />
           <Logout />
         </nav>
+
         <ContactList contacts={filteredContacts} onEdit={handleEditClick} />
 
         {/* Plus Button to Open Modal for Adding Contact */}
@@ -97,8 +99,40 @@ const Home = () => {
       </Container>
 
       {/* Footer */}
-      <footer className="footer">
+      <footer
+        className="footer text-center py-3"
+        style={{ backgroundColor: "#000", color: "white" }}
+      >
         <p>© 2025 ContactBook. All rights reserved.</p>
+        <div className="social-icons mt-2">
+          <a
+            href="https://x.com/SwetaSi53713188"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mx-2"
+            style={{ color: "white" }}
+          >
+            <FaTwitter size={18} />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/sweta-singh-991a35256/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mx-2"
+            style={{ color: "white" }}
+          >
+            <FaLinkedin size={18} />
+          </a>
+          <a
+            href="https://github.com/sweta-singh28"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mx-2"
+            style={{ color: "white" }}
+          >
+            <FaGithub size={18} />
+          </a>
+        </div>
       </footer>
     </>
   );
