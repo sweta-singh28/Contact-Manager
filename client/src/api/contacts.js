@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/contacts"; // Middleware API Base URL
+const API_URL = "https://contact-manager-yvwr.onrender.com/contacts"; // Middleware API Base URL
 
 // Fetch all contacts
 export const getContacts = async (email) => {
