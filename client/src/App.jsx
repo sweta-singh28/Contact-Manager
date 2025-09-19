@@ -6,7 +6,7 @@ import {
   useNavigate,
 } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./../firebase";
+import { auth } from "./../firebaseClient";
 import Home from "./Components/Home.jsx";
 import ContactDetails from "./Components/ContactDetails.jsx";
 import SignUp from "./Components/SignUp.jsx";

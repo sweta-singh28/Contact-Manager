@@ -1,3 +1,3 @@
 server/serviceAccountKey.json
-client/firebase.js
+client/firebaseClient.js
 node_modules

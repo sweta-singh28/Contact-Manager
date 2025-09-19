@@ -1,7 +1,7 @@
 // src/components/SignUp.js
 import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "./../../firebase";
+import { auth } from "./../../firebaseClient";
 import { useNavigate } from "react-router-dom"; // Import useNavigate hook for routing
 import "./../css/SignUp.css";
 

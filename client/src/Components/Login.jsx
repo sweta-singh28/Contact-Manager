@@ -1,7 +1,7 @@
 // src/components/Login.js
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase";
+import { auth } from "../../firebaseClient";
 import { useNavigate } from "react-router-dom"; // Import useNavigate hook for routing
 import "./../css/Login.css";
 
